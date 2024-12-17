@@ -1,0 +1,112 @@
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/aviorety/Flow/refs/heads/main/Library.lua'))()
+local main = Library.new()
+
+local rage = main:create_tab('Rage', 'rbxassetid://76499042599127')
+local player = main:create_tab('Player', 'rbxassetid://126017907477623')
+local world = main:create_tab('World', 'rbxassetid://85168909131990')
+local misc = main:create_tab('Misc', 'rbxassetid://132243429647479')
+
+do
+    local module = rage:create_module({
+        title = 'Module',
+        flag = 'module',
+
+        description = 'Defined as a test feature for current library',
+        section = 'left',
+
+        callback = function(value: boolean)
+            
+        end
+    })
+
+    --[[
+        module:change_state(true)
+    ]]
+
+    local checkbox = module:create_checkbox({
+        title = 'Checkbox',
+        flag = 'checkbox',
+
+        callback = function(value: boolean)
+
+        end
+    })
+
+    --[[
+        checkbox:change_state(true)
+    ]]
+
+    local slider = module:create_slider({
+        title = 'Slider',
+        flag = 'slider',
+
+        maximum_value = 100,
+        minimum_value = 1,
+        value = 50,
+
+        round_number = false,
+
+        callback = function(value: boolean)
+
+        end
+    })
+
+    --[[
+        it's not really finished, so don't use it as for now
+
+        slider:update(...) - uses ur current mouse position as for now
+    ]]
+
+    local dropdown = module:create_dropdown({
+        title = 'Dropdown',
+        flag = 'dropdown',
+
+        options = {
+            'Option 1',
+            'Option 2',
+            'Option 3',
+            'Option 4'
+        },
+
+        multi_dropdown = false,
+        maximum_options = 4,
+
+        callback = function(value: string)
+
+        end
+    })
+
+    --[[
+        dropdown:update('Option 2')
+    ]]
+
+    local multi_dropdown = module:create_dropdown({
+        title = 'Multi dropdown',
+        flag = 'multi_dropdown',
+
+        options = {
+            'Option 1',
+            'Option 2',
+            'Option 3',
+            'Option 4'
+        },
+
+        multi_dropdown = true,
+        maximum_options = 4,
+
+        callback = function(value: string)
+
+        end
+    })
+
+    --[[
+        multi_dropdown:update('Option 2') - if Option 2 already exists, then it will remove it
+    ]]
+end
+
+main:removed(function()
+    --whenver current UI destroying, it will run this function
+	--Connections:disconnect_all()
+end)
+
+main:load()
